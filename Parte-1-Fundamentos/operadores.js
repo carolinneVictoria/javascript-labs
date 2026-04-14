@@ -20,7 +20,7 @@ console.log("O seu troco é de R$" + calculoTroco.toFixed(2) + "!");
 
 // 4. Crie duas variáveis com senhas digitadas em momentos diferentes. Exiba no console o resultado da comparação que verifica se as senhas são iguais.
 let senha1 = "123abc";
-let senha2 = "123abc"
+let senha2 = "123abc";
 
 console.log(senha1 === senha2);
 
