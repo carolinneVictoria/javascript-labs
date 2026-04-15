@@ -8,7 +8,7 @@ if(idadeUsuario >= 18){
     console.log("Venda proibida para menores de 18 anos.");
 }
 
-// 2. Crie uma variável horaAtual. Se estiver entre 6 e 12, mostre "Bom dia"; entre 12 e 18, "Boa tarde"; caso contrário, "Boa noite".
+// 2. Crie uma variável horaAtual. Se estiver entre 6 e 12, mostre "bom dia"; entre 12 e 18, "Boa tarde"; caso contrário, "Boa noite".
 let horaAtual = 7;
 
 if(horaAtual >= 6 && horaAtual < 12){
