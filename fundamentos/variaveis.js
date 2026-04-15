@@ -24,7 +24,7 @@ console.log("3. Você está em " + cidade + " - " + estado + ", " + pais + ".");
 let temCarteira = true;
 console.log("4. O tipo da variável é " + typeof temCarteira);
 
-// 5. Crie uma variável saldo iniciando com 0. Depois, simule um depósito de 200 e um saque de 50. Mostre o saldo final no console com uma frase explicando.
+// 5. Crie uma variável saldo iniciando com 0. Depoisgit  simule um depósito de 200 e um saque de 50. Mostre o saldo final no console com uma frase explicando.
 let saldoInicial = 0;
 saldoInicial += 200;
 saldoInicial -= 50;
