@@ -32,8 +32,7 @@ let limiteFaltas = totalAulas * 0.25;
 
 console.log(faltas > limiteFaltas);
 
-// 6. Crie duas variáveis booleanas: temLogin e temSenha.
-// Exiba no console o resultado da expressão lógica que verifica se ambas são verdadeiras.
+// 6. Crie duas variáveis booleanas: temLogin e temSenha. Exiba no console o resultado da expressão lógica que verifica se ambas são verdadeiras.
 let temLogin = true;
 let temSenha = true;
 
