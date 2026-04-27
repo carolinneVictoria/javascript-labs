@@ -1,5 +1,3 @@
-//encontrar o botao de adicionar
-
 const btnAdicionarTarefa = document.querySelector('.app__button--add-task')
 const formAdicionarTarefa = document.querySelector('.app__form-add-task')
 const textarea = document.querySelector('.app__form-textarea')
@@ -24,9 +22,14 @@ function criarElementoTarefa(tarefa) {
 
     const button = document.createElement('button')
     button.classList.add('app_button-edit')
+
+    button.onclick = () => {
+        const novaDescricao =prompt('Editar tarefa', tarefa.descicao)
+        paragrafo.textContent = novaDescricao
+    }
+
     const imagemBotao = document.createElement('img')
     imagemBotao.setAttribute('src', 'imagens/edit.png')
-
     button.append(imagemBotao)
 
     li.append(svg, paragrafo, button)
