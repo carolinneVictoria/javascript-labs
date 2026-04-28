@@ -42,23 +42,28 @@ function criarElementoTarefa(tarefa) {
 
     li.append(svg, paragrafo, button)
 
-    li.onclick = () => {
-        document.querySelectorAll('.app__section-task-list-item-active').forEach(item => {
+    if(tarefa.completa){
+        liTarefaSelecionada.classList.add('app__section-task-list-item-complete')
+        button.setAttribute('disabled', 'true')
+    } else {
+        li.onclick = () => {
+            document.querySelectorAll('.app__section-task-list-item-active').forEach(item => {
             item.classList.remove('app__section-task-list-item-active')
-        })
+            })
 
-        if (tarefaSelecionada === tarefa) {
-            paragrafoDescricaoTarefa.textContent = ''
-            tarefaSelecionada = null
-            liTarefaSelecionada = null
-            return
+            if (tarefaSelecionada === tarefa) {
+                paragrafoDescricaoTarefa.textContent = ''
+                tarefaSelecionada = null
+                liTarefaSelecionada = null
+                return
+            }
+
+            tarefaSelecionada = tarefa
+            liTarefaSelecionada = li
+            paragrafoDescricaoTarefa.textContent = tarefa.descicao
+            
+            li.classList.add('app__section-task-list-item-active')
         }
-
-        tarefaSelecionada = tarefa
-        liTarefaSelecionada = li
-        paragrafoDescricaoTarefa.textContent = tarefa.descicao
-        
-        li.classList.add('app__section-task-list-item-active')
     }
 
     return li
@@ -91,5 +96,7 @@ document.addEventListener('focoFinalizado', () => {
         liTarefaSelecionada.classList.remove('app__section-task-list-item-active')
         liTarefaSelecionada.classList.add('app__section-task-list-item-complete')
         liTarefaSelecionada.querySelector('button').setAttribute('disabled', 'true')
+        tarefaSelecionada.completa = true
+        atualizarTarefas()
     }
 })
