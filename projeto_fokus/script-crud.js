@@ -6,6 +6,7 @@ const paragrafoDescricaoTarefa = document.querySelector('.app__section-active-ta
 
 const tarefas = JSON.parse(localStorage.getItem('tarefas')) || []
 let tarefaSelecionada = null
+let liTarefaSelecionada = null
 
 function atualizarTarefas () {
     localStorage.setItem('tarefas', JSON.stringify(tarefas))
@@ -45,15 +46,16 @@ function criarElementoTarefa(tarefa) {
         document.querySelectorAll('.app__section-task-list-item-active').forEach(item => {
             item.classList.remove('app__section-task-list-item-active')
         })
-        
+
         if (tarefaSelecionada === tarefa) {
             paragrafoDescricaoTarefa.textContent = ''
             tarefaSelecionada = null
-            li.classList.remove('app__section-task-list-item-active')
+            liTarefaSelecionada = null
             return
         }
 
         tarefaSelecionada = tarefa
+        liTarefaSelecionada = li
         paragrafoDescricaoTarefa.textContent = tarefa.descicao
         
         li.classList.add('app__section-task-list-item-active')
@@ -82,4 +84,12 @@ formAdicionarTarefa.addEventListener('submit', (evento) => {
 tarefas.forEach(tarefa =>{
     const elementoTarefa = criarElementoTarefa(tarefa)
     ulTarefas.append(elementoTarefa)
+})
+
+document.addEventListener('focoFinalizado', () => {
+    if (tarefaSelecionada && liTarefaSelecionada) {
+        liTarefaSelecionada.classList.remove('app__section-task-list-item-active')
+        liTarefaSelecionada.classList.add('app__section-task-list-item-complete')
+        liTarefaSelecionada.querySelector('button').setAttribute('disabled', 'true')
+    }
 })
