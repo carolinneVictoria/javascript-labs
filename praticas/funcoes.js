@@ -46,3 +46,56 @@ function calcularFrete(distancia) {
     }
 }
 calcularFrete(15)
+
+// Processamento de Pedido
+
+function mensagemPersonalizada(nome, tipo) {
+    if (tipo === "vip") {
+        console.log(`Obrigado pela preferência, ${nome}! Você ganhou frete grátis.`);
+    } else if (tipo === "novo") {
+        console.log(`Bem-vindo(a), ${nome}! Aproveite um cupom de boas-vindas.`);
+    } else {
+        console.log(`Obrigado pela sua compra, ${nome}!`);
+    }
+}
+
+function processarPedido(nomeCliente, tipoCliente, callback) {
+    console.log("Processando pedido de " + nomeCliente)
+    callback(nomeCliente, tipoCliente);
+}
+
+processarPedido("Carol", "vip", mensagemPersonalizada);
+
+// Mensagem pós processamento
+function mostrarResposta(nome) {
+    setTimeout(() => {
+        console.log("Olá " + nome + "! Aqui está a resposta para sua dúvida.");
+    }, 3000);
+}
+
+function responderUsuario(nomeUsuario, callback) {
+    console.log("Processando sua pergunta...")
+    callback(nomeUsuario)
+}
+
+responderUsuario("Fernanda", mostrarResposta)
+
+// Avaliando a pontuação de um usuário
+function exibirMensagemDesempenho(pontuacao) {
+    if (pontuacao >= 70) {
+        console.log("Parabéns, você foi aprovado!")
+    } else if (pontuacao > 50 && pontuacao <= 69) {
+        console.log("Tente mais! Você precisa de reforço!")
+    } else {
+        console.log("Você foi reprovado! Continue se esforçando.")
+    }
+}
+
+function avaliarDesempenho(pontuacaoFinal, callback) {
+    console.log("Pontuação: " + pontuacaoFinal)
+    callback(pontuacaoFinal)
+}
+
+avaliarDesempenho(82, exibirMensagemDesempenho);
+avaliarDesempenho(52, exibirMensagemDesempenho);
+avaliarDesempenho(40, exibirMensagemDesempenho);
