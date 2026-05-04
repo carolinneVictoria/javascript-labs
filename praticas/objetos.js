@@ -14,3 +14,11 @@ const configuracoes = {
 }
 console.log("Tema: ", configuracoes.tema)
 console.log("Idioma: ", configuracoes['idioma'])
+
+// Lidando com arrays dentro de objetos
+const receita = {
+    nome: 'Panqueca',
+    igredientes: ['farinha', 'ovos', 'sal'],
+    tempoPreparo: '15 minutoss'
+}
+console.log('Igrediente Complementar: ', receita.igredientes[2])
