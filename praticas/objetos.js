@@ -5,3 +5,12 @@ const produto = {
     disponivel: true
 }
 console.log(produto)
+
+// Acessando dados com ponto e colchetes
+const configuracoes = {
+    tema: 'escuro',
+    notificacoes: 0,
+    idioma: 'pt-BR'
+}
+console.log("Tema: ", configuracoes.tema)
+console.log("Idioma: ", configuracoes['idioma'])
