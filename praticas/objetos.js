@@ -32,3 +32,14 @@ const carro = {
 };
 delete carro.modeloAntigo
 console.log(carro)
+
+// Iterando um array de objetos
+const dispositivos = [
+    { nome: 'Impressora', status: 'Ativo' },
+    { nome: 'Scanner', status: 'Inativo' },
+    { nome: 'Projetor', status: 'Ativo' },
+]
+
+for (const dispositivo of dispositivos) {
+    console.log(`Dispositivo: ${dispositivo.nome} | Status: ${dispositivo.status}`)
+}
