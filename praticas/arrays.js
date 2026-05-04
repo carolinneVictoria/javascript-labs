@@ -12,3 +12,15 @@ for (let i = 0; i < despesas.length; i++) {
     soma += despesas[i]
 }
 console.log(`Total de despesas: R$ ${soma}`);
+
+// Exibindo nomes com for of
+const estudantes = ['Carla', 'João', 'Maria', 'Lucas'];
+for (const nome of estudantes){
+    console.log("Estudante: ", nome);
+}
+
+// Exibindo mensagem com forEach
+const mensagens = ['Pedido confirmado', 'Pagamento aprovado', 'Produto enviado'];
+mensagens.forEach(msg => {
+    console.log("Notificação:", msg);
+});
