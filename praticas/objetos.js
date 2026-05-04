@@ -23,3 +23,12 @@ const receita = {
 }
 console.log('Igrediente Complementar: ', receita.ingredientes[2])
 
+/// Removendo uma propriedade
+const carro = {
+    marca: 'Ford',
+    modelo: 'F250',
+    ano: 2005,
+    modeloAntigo: 'F249'
+};
+delete carro.modeloAntigo
+console.log(carro)
