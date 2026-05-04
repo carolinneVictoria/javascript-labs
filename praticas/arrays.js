@@ -42,3 +42,18 @@ pedidosCopia.push('bota')
 
 console.log("Array Original: " + pedidos)
 console.log("Array Copiado: " + pedidosCopia)
+
+// Buscando itens em uma lista
+const livros = ['Dom Casmurro', 'O Cortiço', 'Capitães da Areia', 'Iracema'];
+const livroProcurado = 'O Cortiço';
+if(livros.indexOf(livroProcurado) !== -1){
+    console.log("O livro " + livroProcurado + "está disponivel!")
+} else {
+    console.lof("O livro " + livroProcurado + "não foi encontrado.")
+}
+
+// Transformando dados com map()
+const precos = [100, 80, 50, 120];
+
+const precosComDesconto = precos.map(preco => preco * 0.9);
+console.log("Preços com desconto:", precosComDesconto);
