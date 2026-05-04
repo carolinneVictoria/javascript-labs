@@ -24,3 +24,12 @@ const mensagens = ['Pedido confirmado', 'Pagamento aprovado', 'Produto enviado']
 mensagens.forEach(msg => {
     console.log("Notificação:", msg);
 });
+
+// Adicionando e removendo itens de uma lista
+const tarefas = ['Estudar', 'Lavar roupa', 'Fazer compras'];
+
+tarefas[tarefas.length + 1] = 'Ir na Academia'
+console.log("Lista após adicionar: " + tarefas)
+
+tarefas.pop()
+console.log("Lista após retirar a ultima tarefa: " + tarefas)
