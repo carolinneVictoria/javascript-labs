@@ -15,7 +15,7 @@ console.log(`Total de despesas: R$ ${soma}`);
 
 // Exibindo nomes com for of
 const estudantes = ['Carla', 'João', 'Maria', 'Lucas'];
-for (const nome of estudantes){
+for (const nome of estudantes) {
     console.log("Estudante: ", nome);
 }
 
@@ -46,7 +46,7 @@ console.log("Array Copiado: " + pedidosCopia)
 // Buscando itens em uma lista
 const livros = ['Dom Casmurro', 'O Cortiço', 'Capitães da Areia', 'Iracema'];
 const livroProcurado = 'O Cortiço';
-if(livros.indexOf(livroProcurado) !== -1){
+if (livros.indexOf(livroProcurado) !== -1) {
     console.log("O livro " + livroProcurado + "está disponivel!")
 } else {
     console.lof("O livro " + livroProcurado + "não foi encontrado.")
@@ -57,3 +57,54 @@ const precos = [100, 80, 50, 120];
 
 const precosComDesconto = precos.map(preco => preco * 0.9);
 console.log("Preços com desconto:", precosComDesconto);
+
+// Filtrando valores
+const participantes = [
+    { nome: 'Ana', idade: 17 },
+    { nome: 'Bruno', idade: 22 },
+    { nome: 'Carla', idade: 19 },
+    { nome: 'Daniel', idade: 15 },
+    { nome: 'Eduarda', idade: 25 }
+];
+
+const maiores18 = participantes.filter(pessoa => {
+    pessoa.idade >= 18 ? console.log(`Acesso liberado para: ${pessoa.nome}`) : false;
+    return pessoa.idade >= 18;
+});
+const aprovados = maiores18.map(pessoa => pessoa.nome)
+console.log("Lista de aprovados:", aprovados);
+
+// Painel de controle de produtos
+const produtos = [
+    { nome: 'Notebook', preco: 2500, quantidadeVendida: 75 },
+    { nome: 'Mouse', preco: 100, quantidadeVendida: 180 },
+    { nome: 'Teclado', preco: 150, quantidadeVendida: 125 },
+    { nome: 'Monitor', preco: 900, quantidadeVendida: 95 }
+];
+
+console.log("Relatório de Produtos vendidos: ")
+for (const produto of produtos) {
+    console.log("Produto: ", produto.nome, " | Preço: ", produto.preco, " | Quantidade Vendida: ", produto.quantidadeVendida);
+}
+
+console.log("Produtos com alto volume de vendas (> 100 unidades):")
+const maisDeCemUnidades = produtos.filter(prod => {
+    prod.quantidadeVendida >= 100 ? console.log(prod.nome) : false;
+    return prod.quantidadeVendida >= 100;
+});
+
+console.log("Total de vendas por produto:")
+let maisLucrativo = { nome: '', totalVendas: 0 };
+
+produtos.forEach(prod => {
+    const totalVendidoProduto = prod.preco * prod.quantidadeVendida;
+
+    console.log(`Produto: ${prod.nome} | Total vendido: R$ ${totalVendidoProduto}`);
+
+    if (totalVendidoProduto > maisLucrativo.totalVendas) {
+        maisLucrativo.nome = prod.nome;
+        maisLucrativo.totalVendas = totalVendidoProduto;
+    }
+});
+
+console.log(`\nProduto mais lucrativo: ${maisLucrativo.nome} (R$ ${maisLucrativo.totalVendas})`);
