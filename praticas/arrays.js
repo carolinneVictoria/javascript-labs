@@ -108,3 +108,61 @@ produtos.forEach(prod => {
 });
 
 console.log(`\nProduto mais lucrativo: ${maisLucrativo.nome} (R$ ${maisLucrativo.totalVendas})`);
+
+
+// Crie uma lista de produtos
+// A lista produtos deve conter os seguintes produtos: Computador, Telefone, Mouse, Teclado
+let itens = ['computador', 'telefone', 'mouse', 'teclado']
+
+// Exiba essa lista no console quando abrir o index.html.
+console.log(itens)
+
+// Mostre no console quantos produtos tem nessa lista.
+console.log("Quantidade de produtos: ", itens.length)
+
+// Retire o produto Mouse da lista e retorne no console a lista com os produtos restantes.
+itens = itens.filter(produto => produto !== 'mouse')
+console.log("Lista sem o mouse: ", itens)
+
+// Faça uma busca na sua lista por algum produto, por exemplo procure por Computador e caso exista esse produto na sua lista exiba um console falando que este produto existe
+// e mostre também o nome deste produto, caso não exista mostre uma mensagem avisando que o produto não foi encontrado.
+const itemProcurado = 'computador'
+if (itens.indexOf(itemProcurado) !== -1) {
+    console.log(`O produto ${itemProcurado} está disponivel e foi encontrado!`)
+} else {
+    console.log(`O produto ${itemProcurado} não foi encontrado!`)
+}
+
+// Remova o segundo item da sua lista.
+itens.splice(1, 1)
+console.log(itens)
+
+// Crie uma lista de apenas números: 1, 3, 5, 7, 0, 9
+let numeros = [1, 3, 5, 7, 0, 9]
+
+// Ordene essa lista do menor para o maior.
+numeros.sort((a, b) => a - b)
+console.log("Lista Ordenada: ", numeros)
+
+// Retire o primeiro número desta lista.
+numeros.shift()
+console.log(numeros)
+
+// Inverta toda ordem da sua lista, por exemplo: [1,3,5,7,9] para [9,7,5,3,1]
+numeros.reverse()
+console.log(numeros)
+
+// Crie uma string que contenha o dia de hoje:
+let hoje = '04/05/2026';
+
+// Separe essa data em variáveis: dia (apenas o dia), mês (apenas o mês),
+// e ano (apenas o ano).
+let partes = hoje.split('/');
+
+let dia = partes[0];
+let mes = partes[1];
+let ano = partes[2];
+
+console.log("Dia:", dia);
+console.log("Mês:", mes);
+console.log("Ano:", ano);
