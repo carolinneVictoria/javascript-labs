@@ -33,3 +33,12 @@ console.log("Lista após adicionar: " + tarefas)
 
 tarefas.pop()
 console.log("Lista após retirar a ultima tarefa: " + tarefas)
+
+// Clonando um array
+const pedidos = ['camiseta', 'calça', 'tênis'];
+const pedidosCopia = pedidos.slice()
+
+pedidosCopia.push('bota')
+
+console.log("Array Original: " + pedidos)
+console.log("Array Copiado: " + pedidosCopia)
