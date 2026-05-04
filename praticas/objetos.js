@@ -43,3 +43,17 @@ const dispositivos = [
 for (const dispositivo of dispositivos) {
     console.log(`Dispositivo: ${dispositivo.nome} | Status: ${dispositivo.status}`)
 }
+
+// Criando métodos dentro de um objeto
+const maquina = {
+    nome: 'Mondial Dolce Crema',
+    funcionando: true,
+    exibirStatus: function () {
+        if (this.funcionando) {
+            console.log(`A máquina ${this.nome} está em funcionamento.`);
+        } else {
+            console.log(`A máquina ${this.nome} está parada.`);
+        }
+    }
+}
+maquina.exibirStatus();
