@@ -2,16 +2,16 @@ import api from "./api.js"
 
 const ui = {
 
-    async preencherFormulario(pensamentoId){
+    async preencherFormulario(pensamentoId) {
         const pensamento = await api.buscarPensamentoPorId(pensamentoId)
         document.getElementById("pensamento-id").value = pensamento.id
         document.getElementById("pensamento-conteudo").value = pensamento.conteudo
         document.getElementById("pensamento-autoria").value = pensamento.autoria
     },
 
-    async renderizarPensamentos(){
+    async renderizarPensamentos() {
         const listaPensamentos = document.getElementById("lista-pensamentos")
-
+        listaPensamentos.innerHTML = ""
         try {
             const pensamentos = await api.buscarPensamentos()
             pensamentos.forEach(ui.adicionarPensamentoNaLista)
@@ -21,7 +21,7 @@ const ui = {
         }
     },
 
-    adicionarPensamentoNaLista(pensamento){
+    adicionarPensamentoNaLista(pensamento) {
         const listaPensamentos = document.getElementById("lista-pensamentos")
         const li = document.createElement("li")
         li.setAttribute("data-id", pensamento.id)
@@ -49,9 +49,26 @@ const ui = {
         iconeEditar.alt = "Editar Pensamento"
         botaoEditar.appendChild(iconeEditar)
 
+        const botaoExcluir = document.createElement("button")
+        botaoExcluir.classList.add("botao-excluir.png")
+        botaoExcluir.onclick = async () => {
+            try {
+                await api.excluirPensamento(pensamento.id)
+                ui.renderizarPensamentos()
+            } catch (error) {
+                alert("Erro ao excluir pensamnto")
+            }
+        }
+
+        const iconeExcluir = document.createElement("img")
+        iconeExcluir.src = "assets/imagens/icone-excluir.png"
+        iconeExcluir.alt = "Excluir"
+        botaoExcluir.appendChild(iconeExcluir)
+
         const icones = document.createElement("div")
         icones.classList.add("icones")
-        icones.append(botaoEditar)
+        icones.appendChild(botaoEditar)
+        icones.appendChild(botaoExcluir)
 
         li.appendChild(iconeAspas)
         li.appendChild(pensamentoConteudo)
@@ -60,7 +77,7 @@ const ui = {
         listaPensamentos.appendChild(li)
     },
 
-    limparFormulario(){
+    limparFormulario() {
         document.getElementById("pensamento-form").reset();
     }
 }
