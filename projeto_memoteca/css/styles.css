@@ -198,6 +198,26 @@ h3 {
   color: var(--Azul-Dark, #041832);
 }
 
+.mensagem-vazia {
+  display: none;
+  text-align: center;
+  color: var(--Azul-Dark, #041832);
+  margin-top: 40px;
+}
+
+.mensagem-vazia img {
+  max-width: 200px;
+  margin-bottom: 20px;
+}
+
+.mensagem-vazia p {
+  font-family: "Poppins", sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 33px;
+  text-align: center;
+}
+
 #lista-pensamentos-container {
   width: min(100%, 1200px);
   margin: 40px 16px;
@@ -210,10 +230,10 @@ h3 {
 #lista-pensamentos {
   list-style: none;
   padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 24px;
+  justify-items: center;
 }
 
 .li-pensamento {
@@ -221,9 +241,8 @@ h3 {
   padding: 16px;
   background: var(--Branco, #FFF);
   box-shadow: 8px 8px 0px 0px #154580;
-  flex: 1 1 clamp(240px, 30%, 1fr);
-  max-width: calc(33.333% - 24px);
-  min-width: 240px;
+  width: 100%;
+  max-width: 300px;
   min-height: 315px;
   display: flex;
   flex-direction: column;
@@ -348,11 +367,12 @@ span {
   }
 
   #lista-pensamentos {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
   }
 
   .li-pensamento {
-    max-width: 100%;
+    max-width: 280px;
     min-width: auto;
   }
 }
@@ -385,6 +405,16 @@ span {
 
   .pensamento-autoria {
     font-size: 20px;
+  }
+
+  #lista-pensamentos {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .li-pensamento {
+    max-width: 100%;
+    min-height: 280px;
   }
 
   span {
