@@ -127,6 +127,7 @@ button:hover {
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
+    position: relative;
 }
 
 .li-pet:hover {
@@ -153,6 +154,40 @@ button:hover {
     font-size: 1.1em;
     color: var(--text-color);
     margin-bottom: 15px;
+}
+
+.icones {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    display: flex;
+    gap: 8px;
+}
+
+.botao-editar,
+.botao-excluir {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+.botao-editar {
+    color: var(--primary-color);
+}
+
+.botao-editar:hover {
+    background-color: rgba(74, 144, 226, 0.1);
+}
+
+.botao-excluir {
+    color: #e74c3c;
+}
+
+.botao-excluir:hover {
+    background-color: rgba(231, 76, 60, 0.1);
 }
 
 @media (max-width: 768px) {
