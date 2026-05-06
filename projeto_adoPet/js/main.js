@@ -1,5 +1,5 @@
-import ui from "./ui.js";
 import api from "./api.js";
+import ui from "./ui.js";
 
 document.addEventListener('DOMContentLoaded', () => {
     ui.renderizarPets()
@@ -10,27 +10,32 @@ document.addEventListener('DOMContentLoaded', () => {
     formularioPet.addEventListener("submit", manipularSubmissaoFormulario)
     botaoCancelar.addEventListener("click", manipularCancelamento);
 
-    function manipularCancelamento(){
+    function manipularCancelamento() {
         ui.limparFormulario();
     }
-    function manipularSubmissaoFormulario(event){
+    async function manipularSubmissaoFormulario(event) {
         event.preventDefault();
+        const id = document.getElementById("pet-id").value
         const especie = document.getElementById("pet-especie").value
-        const nome    = document.getElementById("pet-nome").value
-        const raca    = document.getElementById("pet-raca").value
+        const nome = document.getElementById("pet-nome").value
+        const raca = document.getElementById("pet-raca").value
 
         if (!nome || !especie || !raca) {
             alert('Preencha todos os campos!');
             return;
         }
 
-        api.salvarPet({especie, nome, raca})
-            .then(() => {
-                ui.renderizarPets()
-                ui.limparFormulario();
-            })
-            .catch(error => {
-                alert('Erro ao salvar pet! :(')
-            })
+        try {
+            if (id) {
+                await api.editarPet({ id, nome, especie, raca });
+            } else {
+                await api.salvarPet({ nome, especie, raca });
+            }
+            ui.renderizarPets();
+            ui.limparFormulario();
+        } catch (error) {
+            console.error("Erro ao salvar pet:", error);
+            alert("Erro ao salvar pet. Tente novamente mais tarde.");
+        }
     }
 })
