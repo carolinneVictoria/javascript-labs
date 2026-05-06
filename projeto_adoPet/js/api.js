@@ -52,8 +52,18 @@ const api = {
             alert('Erro ao salvar novo pet! :( ')
             throw error;
         }
-    }
+    },
 
+    async excluirPet(pet){
+        try {
+            const response = await fetch(`http://localhost:3000/pets/${pet.id}`, {
+                method: "DELETE",
+        })
+        } catch (error) {
+            alert('Erro ao deletar pet! :( ')
+            throw error;
+        }
+    }
 }
 
 export default api;
