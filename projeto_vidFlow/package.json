@@ -10,6 +10,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "eslint": "^8.57.1"
+    "eslint": "7.10.0"
+  },
+  "dependencies": {
+    "json-server": "0.17.4"
   }
 }
