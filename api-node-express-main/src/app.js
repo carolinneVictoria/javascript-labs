@@ -2,6 +2,8 @@ import express from "express";
 import connectionFromDatabase from "./config/dbConnect.js";
 import routes from "./routes/index.js";
 import "dotenv/config";
+import mongoose from "mongoose";
+import manipuladorDeErros from "./middlewares/manipuladorDeErros.js";
 
 const db = await connectionFromDatabase();
 
@@ -14,5 +16,7 @@ const app = express();
 app.use(express.json());
 
 routes(app);
+
+app.use(manipuladorDeErros);
 
 export default app;
