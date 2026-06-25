@@ -1,57 +1,18 @@
 import Input from '../Input'
-import styled from 'styled-components'
 import { useState } from 'react'
 import { livros } from './dadosPesquisa'
-
-const PesquisaContainer = styled.section`
-    background-image: linear-gradient(90deg, #002F52 35%, #326589 165%);
-    color: #FFF;
-    text-align: center;
-    padding: 85px 0;
-    height: 470px;
-    width: 100%;
-`
-
-const Titulo = styled.h2`
-    color: #FFF;
-    font-size: 36px;
-    text-align: center;
-    width: 100%;
-`
-
-const Subtitulo = styled.h3`
-    font-size: 16px;
-    font-weight: 500;
-    margin-bottom: 40px;
-`
-
-const Resultado = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-    cursor: pointer;
-
-    p {
-        width: 200px;
-    }
-
-    img {
-        width: 100px;
-    }
-
-    &:hover {
-        border: 1px solid white;
-    }
-`
 
 function Pesquisa() {
     const [livrosPesquisados, setLivrosPesquisados] = useState([])
 
     return (
-        <PesquisaContainer>
-            <Titulo>Já sabe por onde começar?</Titulo>
-            <Subtitulo>Encontre seu livro em nossa estante.</Subtitulo>
+        <div className="bg-linear-gradient(90deg, #002F52 35%, #326589 165%) text-white text-center py-21.25 px-0 h-117.5 w-full">
+            <div className="text-white text-[36px] text-center w-full">
+                Já sabe por onde começar?
+            </div>
+            <div className="text-base leading-[500] mb-10">
+                Encontre seu livro em nossa estante.
+            </div>
             <Input
                 placeholder="Escreva sua próxima leitura"
                 onBlur={evento => {
@@ -61,12 +22,12 @@ function Pesquisa() {
                 }}
             />
             { livrosPesquisados.map( livro => (
-                <Resultado>
-                    <img src={livro.src}/>
-                    <p>{livro.nome}</p>
-                </Resultado>
+                <div className="flex justify-center items-center mb-5 cursor-pointer hover:border border-white-1">
+                    <img src={livro.src} className="w-25"/>
+                    <p className="w-50">{livro.nome}</p>
+                </div>
             ) ) }
-        </PesquisaContainer>
+        </div>
     )
 }
 

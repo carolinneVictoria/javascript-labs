@@ -1,11 +1,11 @@
-import styled from "styled-components"
+function Titulo({ children, className = "" }) {
+    return (
+        <h2
+            className={`w-full py-[30px] bg-white text-center m-0 ${className}`}
+        >
+            {children}
+        </h2>
+    );
+}
 
-export const Titulo = styled.h2`
-    width: 100%;
-    padding: 30px 0;
-    background-color: #FFF;
-    color: ${props => props.cor || '#000'};
-    font-size: ${props => props.tamanhoFonte || '18px;'};
-    text-align: ${props => props.alinhamento || 'center'};
-    margin: 0;
-`
+export default Titulo;
