@@ -1,4 +1,3 @@
-import Input from '../Input'
 import { useState } from 'react'
 import { livros } from './dadosPesquisa'
 
@@ -6,27 +5,35 @@ function Pesquisa() {
     const [livrosPesquisados, setLivrosPesquisados] = useState([])
 
     return (
-        <div className="bg-linear-gradient(90deg, #002F52 35%, #326589 165%) text-white text-center py-21.25 px-0 h-117.5 w-full">
-            <div className="text-white text-[36px] text-center w-full">
-                Já sabe por onde começar?
+        <div className="bg-[linear-gradient(90deg,_#002F52_35%,_#326589_165%)] text-white text-center py-[85px] w-full">
+            <div>
+                <h1 className="text-white text-[36px] text-center w-full">Já sabe por onde começar?</h1>
+                <h2 className="text-base mb-10">Encontre seu livro em nossa estante.</h2>
             </div>
-            <div className="text-base leading-[500] mb-10">
-                Encontre seu livro em nossa estante.
+
+            <form>
+                <input className="border border-white bg-transparent rounded-full text-center px-6 py-4 w-[500px] text-white placeholder:text-white"
+                    placeholder="Escreva sua próxima leitura"
+                    id="proximaLeitura"
+                    name="proximaLeitura"
+                    onBlur={evento => {
+                        const textoDigitado = evento.target.value
+                        const resultadoPesquisa = livros.filter(livro => livro.nome.includes(textoDigitado))
+                        setLivrosPesquisados(resultadoPesquisa)
+                    }}
+                />
+            </form>
+            <div className="grid grid-cols-2 gap-6 mt-8 m-8 ">
+                {livrosPesquisados.map((livro) => (
+                    <div
+                        key={livro.nome}
+                        className="flex items-center cursor-pointer hover:border hover:border-white"
+                    >
+                        <img src={livro.src} className="w-25" alt={livro.nome} />
+                        <p className="ml-4">{livro.nome}</p>
+                    </div>
+                ))}
             </div>
-            <Input
-                placeholder="Escreva sua próxima leitura"
-                onBlur={evento => {
-                    const textoDigitado = evento.target.value
-                    const resultadoPesquisa = livros.filter( livro => livro.nome.includes(textoDigitado))
-                    setLivrosPesquisados(resultadoPesquisa)
-                }}
-            />
-            { livrosPesquisados.map( livro => (
-                <div className="flex justify-center items-center mb-5 cursor-pointer hover:border border-white-1">
-                    <img src={livro.src} className="w-25"/>
-                    <p className="w-50">{livro.nome}</p>
-                </div>
-            ) ) }
         </div>
     )
 }

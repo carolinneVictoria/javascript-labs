@@ -1,25 +1,4 @@
-import styled from "styled-components"
 import Titulo from "../Titulo"
-
-const Botao = styled.button`
-    background-color: #EB9B00;
-    color: #FFF;
-    padding: 10px 0px;
-    font-size: 16px;
-    border: none;
-    font-weight: 900;
-    display: block;
-    text-align: center;
-    width: 150px;
-
-    &:hover {
-        cursor: pointer;
-    }
-`
-
-const Descricao = styled.p`
-    max-width: 300px;
-`
 
 function CardRecomenda({titulo, subtitulo, descricao, img}) {
     return (
@@ -27,7 +6,7 @@ function CardRecomenda({titulo, subtitulo, descricao, img}) {
             <div>
                 <Titulo className="text-[16px] text-[#EB9B00] text-left">{titulo}</Titulo>
                 <h2 className="text-[#002f52] text-[18px] font-bold my-[15px]">{subtitulo}</h2>
-                <Descricao>{descricao}</Descricao>
+                <h2 className="max-w-[300px]">{descricao}</h2>
             </div>
             <div>
                 <img className="w-[150px]" src={img} alt="src"/>
