@@ -1,5 +1,4 @@
-const fs = require('fs');
-const { getAllBooks } = require('../services/livro');
+const { getAllBooks, getBookId } = require('../services/livro');
 
 function getLivros (req, res) {
     try {
@@ -11,6 +10,17 @@ function getLivros (req, res) {
     }
 };
 
+function getLivro (req, res) {
+    try {
+        const id = req.params.id; // Obtém o ID do livro a partir dos parâmetros da rota
+        const livro = getBookId(id);
+        res.send(livro);
+    } catch (error) {
+        res.status(500).send('Ocorreu um erro ao processar a requisição.');
+    }
+};
+
 module.exports = {
-    getLivros
+    getLivros,
+    getLivro
 }

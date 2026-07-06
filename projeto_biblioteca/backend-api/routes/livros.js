@@ -1,9 +1,11 @@
 const { Router } = require('express');
-const { getLivros } = require ("../controllers/livro.js");
+const { getLivros, getLivro } = require ("../controllers/livro.js");
 
 const router = Router();
 
 router.get("/", getLivros);
+
+router.get("/:id", getLivro);
 
 router.post("/", (req, res) => {
     res.send('Recebido, voce fez uma requisição do tipo Post!');
