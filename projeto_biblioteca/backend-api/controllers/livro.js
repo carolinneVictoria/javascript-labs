@@ -13,8 +13,13 @@ function getLivros (req, res) {
 function getLivro (req, res) {
     try {
         const id = req.params.id; // Obtém o ID do livro a partir dos parâmetros da rota
-        const livro = getBookId(id);
-        res.send(livro);
+        if (id && Number(id)) {
+            const livro = getBookId(id);
+            res.send(livro);
+        } else {
+            res.status(422).send('ID inválido. O ID deve ser um número positivo.');
+            return;
+        }
     } catch (error) {
         res.status(500).send(error.message);
     }
