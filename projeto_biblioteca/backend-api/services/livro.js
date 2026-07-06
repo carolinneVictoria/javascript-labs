@@ -11,7 +11,14 @@ function getBookId (id) {
     return livroFiltrado;
 }
 
+function insertBook (livroNovo) {
+    const livros = JSON.parse(fs.readFileSync('../livros.json', 'utf-8'));
+    const novaListaDeLivros = [...livros, livroNovo]; // spread
+    fs.writeFileSync('../livros.json', JSON.stringify(novaListaDeLivros));
+}
+
 module.exports = {
     getAllBooks,
-    getBookId
+    getBookId,
+    insertBook
 }
