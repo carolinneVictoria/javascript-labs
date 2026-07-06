@@ -17,6 +17,7 @@ function insertBook (livroNovo) {
     fs.writeFileSync('../livros.json', JSON.stringify(novaListaDeLivros));
 }
 
+// nao ta editando
 function modificaLivro(modificacoes,  id) {
     let livrosAtuais = JSON.parse(fs.readFileSync("livros.json"))
     const indiceModificado = livrosAtuais.findIndex(livro => livro.id === id)
@@ -27,6 +28,7 @@ function modificaLivro(modificacoes,  id) {
     fs.writeFileSync("livros.json", JSON.stringify(livrosAtuais))
 }
 
+// nao ta deletando
 function deletarLivroPorId(id) {
     let livros = JSON.parse(fs.readFileSync('../livros.json', 'utf-8'))
 
