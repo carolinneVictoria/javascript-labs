@@ -1,4 +1,4 @@
-const { getAllBooks, getBookId, insertBook, modificaLivro } = require('../services/livro');
+const { getAllBooks, getBookId, insertBook, modificaLivro, deletarLivroPorId } = require('../services/livro');
 
 function getLivros (req, res) {
     try {
@@ -43,9 +43,20 @@ function patchLivro (req, res) {
     }
 }
 
+function deleteLivro (req, res) {
+    try {
+        const id = req.params.id;
+        deletarLivroPorId(id);
+        res.status(200).send(`Livro com ID ${id} deletado com sucesso!`);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+}
+
 module.exports = {
     getLivros,
     getLivro,
     postLivro,
-    patchLivro
+    patchLivro,
+    deleteLivro
 }
