@@ -1,11 +1,23 @@
+import { useEffect } from 'react';
 import { useState } from 'react'
-import { livros } from './dadosPesquisa'
+import { getLivros } from '../../servicos/livros';
 
 function Pesquisa() {
     const [livrosPesquisados, setLivrosPesquisados] = useState([])
+    const [ livros, setLivros ] = useState([]);
+    
+    async function fetchLivros() {
+        const livrosAPI = await getLivros()
+        setLivros(livrosAPI)
+    }
+
+    useEffect(() => {
+        fetchLivros();
+    }, []);
+
 
     return (
-        <div className="bg-[linear-gradient(90deg,_#002F52_35%,_#326589_165%)] text-white text-center py-[85px] w-full">
+        <div className="_bg-[linear-gradient(90deg,_#002F52_35%,_#326589_165%)] text-white text-center py-[85px] w-full">
             <div>
                 <h1 className="text-white text-[36px] text-center w-full">Já sabe por onde começar?</h1>
                 <h2 className="text-base mb-10">Encontre seu livro em nossa estante.</h2>
