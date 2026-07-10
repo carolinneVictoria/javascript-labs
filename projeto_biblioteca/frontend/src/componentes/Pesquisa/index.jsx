@@ -1,6 +1,8 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 import { useEffect } from 'react';
 import { useState } from 'react'
 import { getLivros } from '../../servicos/livros';
+import { postFavorito } from '../../servicos/favoritos';
 
 function Pesquisa() {
     const [livrosPesquisados, setLivrosPesquisados] = useState([])
@@ -11,10 +13,14 @@ function Pesquisa() {
         setLivros(livrosAPI)
     }
 
+    async function insertFavorito(id) {
+        await postFavorito(id);
+        alert("Livro adicionado aos favoritos com sucesso!")
+    }
+
     useEffect(() => {
         fetchLivros();
     }, []);
-
 
     return (
         <div className="_bg-[linear-gradient(90deg,_#002F52_35%,_#326589_165%)] text-white text-center py-[85px] w-full">
@@ -37,7 +43,7 @@ function Pesquisa() {
             </form>
             <div className="grid grid-cols-2 gap-6 mt-8 m-8 ">
                 {livrosPesquisados.map((livro) => (
-                    <div
+                    <div onClick={() => insertFavorito(livro.id)}
                         key={livro.nome}
                         className="flex items-center cursor-pointer hover:border hover:border-white"
                     >
