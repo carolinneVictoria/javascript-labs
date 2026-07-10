@@ -28,8 +28,13 @@ function getLivro (req, res) {
 function postLivro (req, res) {
     try {
         const livroNovo = req.body; // Obtém os dados do novo livro a partir do corpo da requisição
-        insertBook(livroNovo);
-        res.status(201).send('Livro inserido com sucesso!');
+        if (req.body.nome) {
+            insertBook(livroNovo);
+            res.status(201)
+            res.send('Livro inserido com sucesso!');
+        } else {
+            res.status(422).send('O campo "nome" é obrigatório para inserir um novo livro.');
+        }
     } catch (error) {
         res.status(500).send(error.message);
     }
